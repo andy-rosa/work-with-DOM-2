@@ -1,51 +1,38 @@
 /* JavaScript код */
 
-const buttonThemeLight = document.querySelector('.theme-button-light');
-const buttonThemeDark = document.querySelector('.theme-button-dark');
-
-const buttonFontSerif = document.querySelector('.font-button-serif');
-const buttonFontSansSerif = document.querySelector('.font-button-sans-serif');
-
-const buttonFontSizeSmall = document.querySelector('.font-size-button-s');
-const buttonFontSizeMedium = document.querySelector('.font-size-button-m');
-const buttonFontSizeLarge = document.querySelector('.font-size-button-l');
-
-
 const init = () => {
-    const buttonThemeLightHandler = () => {
-        document.documentElement.dataset['themeName'] = 'light';
-    };
-    const buttonThemeDarkHandler = () => {
-        document.documentElement.dataset['themeName'] = 'dark';
-    };
+  const toolbars = document.querySelectorAll('.js-buttons-container');
 
-    const buttonFontThemeSerif = () => {
-        document.documentElement.dataset['themeFont'] = 'serif';
-    };
-    const buttonFontThemeSansSerif = () => {
-        document.documentElement.dataset['themeFont'] = 'sans-serif';
-    };
+  const disableActiveStateButton = (evt) => {
+    const container = evt.target.closest('.js-buttons-container');
+    const buttons = container.querySelectorAll('button');
+    buttons.forEach((button) => button.classList.remove('active'));
+  };
 
-    const buttonFontSizeSmallHandler = () => {
-        document.documentElement.dataset['themeFontSize'] = 'small';
-    };
-    const buttonFontSizeMediumHandler = () => {
-        document.documentElement.dataset['themeFontSize'] = 'medium';
-    };
-    const buttonFontSizeLargeHandler = () => {
-        document.documentElement.dataset['themeFontSize'] = 'large';
-    }
+  const setSettingStyle = (evt, button) => {
+    const container = evt.target.closest('ul');
+    const settingName = container.dataset.settingName;
+    const settingNameFormat = `${settingName[0].toUpperCase()}${settingName.slice(1)}`;
 
+    const settingValue = container.dataset.settingValue;
+    const setting = button.dataset[`setting${settingNameFormat}`];
 
-    buttonFontSizeSmall.addEventListener('click', buttonFontSizeSmallHandler);
-    buttonFontSizeMedium.addEventListener('click', buttonFontSizeMediumHandler);
-    buttonFontSizeLarge.addEventListener('click', buttonFontSizeLargeHandler);
+    document.documentElement.dataset[`${settingValue}`] = setting;
+  };
 
-    buttonFontSerif.addEventListener('click', buttonFontThemeSerif);
-    buttonFontSansSerif.addEventListener('click', buttonFontThemeSansSerif);
+  const toolbarClickHandler = (toolbar) => {
+    toolbar.addEventListener('click', (evt) => {
+      const button = evt.target.closest('button');
+      if (!button) return;
+      
+      disableActiveStateButton(evt);
+      setSettingStyle(evt, button);
 
-    buttonThemeLight.addEventListener('click', buttonThemeLightHandler);
-    buttonThemeDark.addEventListener('click', buttonThemeDarkHandler);
+      button.classList.add('active');
+    })
+  };
+
+  toolbars.forEach(toolbarClickHandler);
 
 };
 

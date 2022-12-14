@@ -13,37 +13,37 @@
         <dl class="container settings-content">
           <dt>Тема</dt>
           <dd>
-            <ul class="themes">
+            <ul class="themes js-buttons-container" data-setting-name="theme" data-setting-value="themeName">
               <li>
-                <button class="theme-button active theme-button-light" type="button">Светлая</button>
+                <button class="theme-button active theme-button-light" type="button" data-setting-theme="light">Светлая</button>
               </li>
               <li>
-                <button class="theme-button theme-button-dark" type="button">Темная</button>
+                <button class="theme-button theme-button-dark" type="button" data-setting-theme="dark" >Темная</button>
               </li>
             </ul>
           </dd>
           <dt>Шрифт</dt>
           <dd>
-            <ul class="fonts">
+            <ul class="fonts js-buttons-container" data-setting-name="font" data-setting-value="themeFont">
               <li>
-                <button class="font-button active font-button-sans-serif" type="button">Без засечек</button>
+                <button class="font-button active font-button-sans-serif" type="button" data-setting-font="sans-serif">Без засечек</button>
               </li>
               <li>
-                <button class="font-button font-button-serif" type="button">С засечками</button>
+                <button class="font-button font-button-serif" type="button" data-setting-font="serif">С засечками</button>
               </li>
             </ul>
           </dd>
           <dt>Размер шрифта</dt>
           <dd>
-            <ul class="font-sizes">
+            <ul class="font-sizes js-buttons-container" data-setting-name="fontSize" data-setting-value="themeFontSize">
               <li>
-                <button class="font-size-button active font-size-button-s" type="button">А</button>
+                <button class="font-size-button active font-size-button-s" type="button" data-setting-font-size="small">А</button>
               </li>
               <li>
-                <button class="font-size-button font-size-button-m" type="button">А</button>
+                <button class="font-size-button font-size-button-m" type="button" data-setting-font-size="medium">А</button>
               </li>
               <li>
-                <button class="font-size-button font-size-button-l" type="button">А</button>
+                <button class="font-size-button font-size-button-l" type="button" data-setting-font-size="large">А</button>
               </li>
             </ul>
           </dd>
